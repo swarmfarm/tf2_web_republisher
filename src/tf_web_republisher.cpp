@@ -408,7 +408,7 @@ int main(int argc, char** argv)
 
 	if (spawn_client.registerParamNode(
 			swarmfarm::dynamic_spawn::Node(),
-			"rosbridge.permissions.tf2-web-republisher",
+			"advanced-perception.permissions.tf2-web-republisher.is-enabled",
 			true,
 			true))
 	{
