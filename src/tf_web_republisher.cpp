@@ -57,6 +57,7 @@
 
 // SwarmBot
 #include "dynamic_spawn/spawn_client.hpp"
+#include "swarmbot_utils/param_getter.h"
 
 class TFRepublisher
 {
@@ -405,8 +406,10 @@ int main(int argc, char** argv)
 
 	// Create the spawn client
 	swarmfarm::dynamic_spawn::SpawnClient spawn_client(nh);
+	ParamGetter::ParamGetter param_getter(*nh, "/SwarmbotAdvPerc");
 
-	if (spawn_client.registerParamNode(
+	if (param_getter.getOptionalParam<bool>("enabled").value_or(false)
+		&& spawn_client.registerParamNode(
 			swarmfarm::dynamic_spawn::Node(),
 			"advanced-perception.permissions.tf2-web-republisher.is-enabled",
 			true,
